@@ -27,10 +27,5 @@ export class DialogService {
     });
     return this.dialogRef.afterClosed();
   }
-
  }
 
-//  this.dialogRef.afterClosed().subscribe(value => {
-//   console.log(`Dialog sent: ${value}`);
-//   return value;
-// });

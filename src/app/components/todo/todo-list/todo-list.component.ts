@@ -17,7 +17,6 @@ export class TodoListComponent implements OnInit {
      public displayedColumns: string[];
      public panelOpenState: boolean;
      public wantDelete: boolean;
-     public dialogResult: any;
 
   constructor(
      // tslint:disable-next-line:variable-name
@@ -34,10 +33,7 @@ export class TodoListComponent implements OnInit {
 
   public getTaks() {
    this.tasks = this._todoSrv.getTodoTasks();
-   console.log('tareas', this.tasks);
   }
-
-
 
   public deleteTask(id) {
     const deleteTitle = 'Are you sure you wan´t to delete this task ?';
@@ -49,6 +45,8 @@ export class TodoListComponent implements OnInit {
        if (result) {
         this.wantDelete = result;
         this._todoSrv.deleteTask(id);
+        this.getTaks();
+        console.log('id eliminada ', id);
        } else {
         this.wantDelete = false;
        }

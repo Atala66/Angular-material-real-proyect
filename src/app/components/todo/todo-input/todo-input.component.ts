@@ -52,7 +52,7 @@ export class TodoInputComponent implements OnInit {
      this.categorySelected = this.onSelectChange(this.selected);
      this.validateForm(this.todoText);
      if (this.isValidForm) {
-      this.newTask = this._todoSrv.addNewTask(this.todoText, this.todoDescription,  this.todoDate, this.categorySelected);
+      this.newTask = this._todoSrv.addNewTask(this.newTask.id, this.todoText, this.todoDescription,  this.todoDate, this.categorySelected);
      }
      this.emptyForm();
   }
