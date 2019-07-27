@@ -1,0 +1,14 @@
+<div class="container">
+<mat-card class="example-card"
+   *ngFor="let image of images;index as i">
+<div class="content-overlay">
+     <div class="content-details fadeIn-top">
+        <h3 class="image-title">{{ image.title }}</h3>
+        <p class="image-description">{{ image.description }}</p>
+      </div> 
+</div>
+    <img mat-card-image [src]="image.url" class="image">
+ <!--<br *ngIf="!(i + 1)% 4 == 0" />-->  
+ 
+</mat-card>
+</div>
