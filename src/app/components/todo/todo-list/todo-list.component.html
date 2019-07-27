@@ -1,0 +1,19 @@
+
+ <div class="container">
+
+<mat-list>
+  <mat-list-item *ngFor="let task of tasks">
+    <mat-icon matListIcon class="delete-icon" color="warn" (click)="deleteTask(task.id)">delete</mat-icon>
+    <span matLine class="task-test"> {{task.text }}
+        <span class="task-date">{{task.date | date: 'fullDate' }}</span>
+        <span class="category-container">
+            <span class="task-category">({{ task.selectedCategory }})</span>
+        </span>
+    </span>
+    <p matLine>
+       <span class="task-description"> {{task.description }}</span>  
+    </p>
+  </mat-list-item>
+</mat-list>
+ </div>
+
