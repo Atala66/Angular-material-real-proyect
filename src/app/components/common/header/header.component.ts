@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
-   public sideNavOpen: false;
+ @Input() navLinks: any[];
+ @Input() sessionOwner: string;
+ @Input() avatar: string;
 
   constructor(
     private routeSrv: Router
@@ -15,14 +17,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() { }
 
+
+
+
   public navigateTo(route) {
     this.routeSrv.navigate([route]);
 
   }
 
-  private toggleSideNav() {
-
-  }
 
 
 }

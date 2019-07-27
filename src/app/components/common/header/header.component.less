@@ -7,10 +7,32 @@
     bottom: 0;
     left: 0;
     right: 0;
+  .user_menu {
+      height: 100px;
+      .avatar {
+        width: 60px;
+       height: 60px;
+       object-fit: cover;
+       background-color: #c7c5c5;
+       border-radius: 50%;
+       margin-top: 32px;
+      }
+    }
+    mat-sidenav{
+        width: 250px;
+        .mat-drawer-inner-container {
+            overflow: hidden !important;
+        }
+    }
+    .mat-list-base .mat-list-item {
+        font-size: 16px;
+        margin-left:5px;
+        &:hover{
+            color: red;
+        }
+    }
 
     .example-sidenav-container {
-        /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-           causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
         flex: 1;
       }
   }

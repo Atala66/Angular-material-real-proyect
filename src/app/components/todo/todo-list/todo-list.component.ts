@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { TodoModel } from '../todo.model';
 import { DialogService } from '../../../core/dialog.service';
-import { Observable } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector

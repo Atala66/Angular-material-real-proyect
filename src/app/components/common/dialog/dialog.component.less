@@ -1,24 +1,32 @@
 
-
-
-mat-dialog-content {
-    overflow: hidden;
-    .material-icons {
-        font-size: 50px;
+.dialog {
+    mat-dialog-content {
+        overflow: hidden;
+        .material-icons {
+            font-size: 50px;
+        }
+        .icon {
+            margin-top: 3px;
+            margin-left: 199px;
+        }
+        .mat-dialog-title {
+            margin:18px;
+        }
+        .title {
+            color: red;
+            text-align:center;     
+        }
     }
-    .icon {
-        margin-top: 3px;
-        margin-left: 199px;
-    }
-    .title {
-        color: red;
-        text-align:center;
-        margin:0;
-        
+    .buttons-container {
+        justify-content: space-around;
+        margin-top: 20px;
+        .mat-primary {
+            min-width: 90px;
+        }
+        .cancel-btn {
+            margin-right: 140px;
+        }
     }
 }
-.buttons-container {
-    justify-content: space-around;
-    margin-top: 25px;
-}
+
 

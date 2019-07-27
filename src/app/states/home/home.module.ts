@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../core/material.module';
 import { HeaderComponent } from 'src/app/components/common/header/header.component';
 import { HomeComponent } from './home.component';
+import { HomeService } from './home.service';
 
 
 
@@ -21,6 +22,9 @@ const routes: Routes = [
     CommonModule,
     MaterialModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    HomeService
   ],
   exports : [
      HomeComponent
