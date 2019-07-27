@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
@@ -9,6 +9,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class DialogComponent implements OnInit {
    public title: string;
+   public icon: any;
+   public value: any;
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) data: any
@@ -16,18 +18,18 @@ export class DialogComponent implements OnInit {
 
    if (data) {
     this.title = data.title;
-      }
-
+    this.icon = data.icon;
+    }
    }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 
-  public continue() {
-    this.dialogRef.close();
+  public continue(val) {
+    this.dialogRef.close(val);
   }
 
-  public cancel() {
-    this.dialogRef.close();
+  public cancel(val) {
+    this.dialogRef.close(val);
   }
 }

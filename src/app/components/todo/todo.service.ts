@@ -28,13 +28,12 @@ export class TodoService {
  public addNewTask(text: string, description: string, date: string, category: any) {
     const newTask = new TodoModel(this.nextIndex, text, description, date, category);
     this.todoTasks.push(newTask);
-    console.log('nueva Tarea ', newTask);
     this.nextIndex ++;
     return newTask;
  }
 
  public deleteTask(id: number) {
-  this.todoTasks.filter(item => item.id !== id);
+  this.todoTasks.splice(id, 1);
   console.log('array con elemntos eliminados', this.todoTasks);
   return this.todoTasks;
  }

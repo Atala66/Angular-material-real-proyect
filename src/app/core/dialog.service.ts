@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import {MatDialog,  MatDialogRef} from '@angular/material';
 import {DialogComponent } from '../components/common/dialog/dialog.component';
 
@@ -7,6 +8,7 @@ import {DialogComponent } from '../components/common/dialog/dialog.component';
 })
 export class DialogService {
   public dialogRef: MatDialogRef<any>;
+  public result: any;
 
   constructor(
     // tslint:disable-next-line:variable-name
@@ -14,21 +16,21 @@ export class DialogService {
   ) {}
 
 
-  public openDialog(dialogTitle: string) {
+  public openDialog(dialogTitle?: string, dialogIcon?: any): Observable<any>  {
     this.dialogRef = this._dialogSrv.open(DialogComponent, {
       width: '500px',
-      height: '400px',
+      height: '250px',
       data: {
-        title: dialogTitle
+        title: dialogTitle ? dialogTitle : '',
+        icon: dialogIcon ? dialogIcon : ''
       }
     });
-    this.dialogRef.afterClosed().subscribe(result => {
-      console.log('After Closed >>> ', result);
-    });
+    return this.dialogRef.afterClosed();
   }
 
+ }
 
-  public closeDialog() {
-     }
-
-}
+//  this.dialogRef.afterClosed().subscribe(value => {
+//   console.log(`Dialog sent: ${value}`);
+//   return value;
+// });

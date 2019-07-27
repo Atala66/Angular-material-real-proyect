@@ -30,6 +30,7 @@ export class TodoInputComponent implements OnInit {
   public categoriesList: any[];
   public isValidForm: boolean;
   public dialog: DialogComponent;
+  public dialogResult: any;
 
   constructor(
    // tslint:disable-next-line:variable-name
@@ -53,15 +54,14 @@ export class TodoInputComponent implements OnInit {
      if (this.isValidForm) {
       this.newTask = this._todoSrv.addNewTask(this.todoText, this.todoDescription,  this.todoDate, this.categorySelected);
      }
-     console.log('newTask', this.newTask);
      this.emptyForm();
   }
 
   private validateForm(formField: any) {
     if ( formField === '' || formField === null || formField === undefined) {
-      console.log(this.dialog);
       const dialogTitle = 'Task Name is Required';
-      this._dialogSrv.openDialog(dialogTitle);
+      const dialogIcon = 'error';
+      this._dialogSrv.openDialog(dialogTitle, dialogIcon);
       this.isValidForm = false;
         } else {
           this.isValidForm = true;

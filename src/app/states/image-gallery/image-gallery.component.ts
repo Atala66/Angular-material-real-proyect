@@ -24,7 +24,6 @@ export class ImageGalleryComponent implements OnInit {
     const imagesGalleryUrl = '../../../assets/mocks/imagesResponse.json';
     this.imageGallerySrv.getImages(imagesGalleryUrl).subscribe(
       response => {
-        console.log(response);
         this.images = response.images;
       }
     );

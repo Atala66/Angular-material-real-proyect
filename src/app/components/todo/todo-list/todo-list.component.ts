@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { TodoModel } from '../todo.model';
 import { DialogService } from '../../../core/dialog.service';
+import { Observable } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,6 +17,7 @@ export class TodoListComponent implements OnInit {
      public displayedColumns: string[];
      public panelOpenState: boolean;
      public wantDelete: boolean;
+     public dialogResult: any;
 
   constructor(
      // tslint:disable-next-line:variable-name
@@ -36,19 +38,21 @@ export class TodoListComponent implements OnInit {
   }
 
 
-  public deleteTask(id: any) {
-    this.validateDeleteTask();
-    if (this.wantDelete) {
-      this.tasks.splice(id, 1);
-    } else {
-      return false;
-    }
-  }
 
-
-  private validateDeleteTask() {
+  public deleteTask(id) {
     const deleteTitle = 'Are you sure you wan´t to delete this task ?';
-    this._dialogSrv.openDialog(deleteTitle);
+    const dialogIcon = 'warning';
+    this._dialogSrv.openDialog(deleteTitle, dialogIcon);
+    this._dialogSrv.dialogRef.afterClosed().subscribe(
+     result => {
+       console.log( result);
+       if (result) {
+        this.wantDelete = result;
+        this._todoSrv.deleteTask(id);
+       } else {
+        this.wantDelete = false;
+       }
+     });
   }
 
 
