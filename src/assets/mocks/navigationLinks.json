@@ -2,6 +2,7 @@
     "navLinks": [
         { "linkName": "Image Gallery", "icon": "image", "route": "image-gallery" },
         { "linkName": "Todo App", "icon": "image", "route": "todo-app" },
+        { "linkName": "Table View", "icon": "image", "route": "table-view" },
         { "linkName": "Testing 1", "icon": "image", "route": "testing" },
         { "linkName": "Testing 2", "icon": "image", "route": "testing-two" }
     ]

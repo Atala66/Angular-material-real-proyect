@@ -14,6 +14,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {CdkTableModule} from '@angular/cdk/table';
 
 @NgModule({
   imports: [
@@ -38,7 +41,10 @@ import {MatMenuModule} from '@angular/material/menu';
     MatExpansionModule,
     MatDialogModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule,
+    MatSortModule,
+    CdkTableModule
   ],
   declarations: [ ],
   providers: [
@@ -67,7 +73,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatExpansionModule,
     MatDialogModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    CdkTableModule
    ]
 })
 export class MaterialModule {
