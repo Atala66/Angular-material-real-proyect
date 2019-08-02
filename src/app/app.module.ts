@@ -9,7 +9,6 @@ import { MaterialModule } from './core/material.module';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
