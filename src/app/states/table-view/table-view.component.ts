@@ -20,13 +20,16 @@ export class TableViewComponent implements OnInit {
   }
 
   public configTable() {
-    // this.configColumns();
-    // this.getUsers();
-    this.columns = [ 'Id', 'Nombre', 'Apellidos', 'Nacionalidad', 'Edad'];
+     this.configColumns();
+     this.getUsers();
+
+  }
+
+  public getUsers() {
     const url  = '../../../assets/mocks/users.json';
     this.tableSrv.getData(url).subscribe(response => {
      if (response) {
-       this.dataSource = response;
+       this.dataSource = new MatTableDataSource(response);
        console.log('esta es la fuente de datos', this.dataSource);
 
      } else {
@@ -36,22 +39,8 @@ export class TableViewComponent implements OnInit {
     });
   }
 
-  // public getUsers() {
-  //   const url  = '../../../assets/mocks/users.json';
-  //   this.tableSrv.getData(url).subscribe(response => {
-  //    if (response) {
-  //      this.dataSource = response;
-  //      console.log('esta es la fuente de datos', this.dataSource);
 
-  //    } else {
-  //      console.log('sin respuesta');
-  //    }
-
-  //   });
-  // }
-
-
-  // public configColumns() {
-  //   this.columns = [ 'Id', 'Nombre', 'Apellidos', 'Nacionalidad', 'Edad'];
-  //  }
+  public configColumns() {
+    this.columns = [ 'Id', 'Nombre', 'Apellidos', 'Nacionalidad', 'Edad'];
+   }
 }

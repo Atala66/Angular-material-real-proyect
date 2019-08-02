@@ -10,7 +10,8 @@ export class TableComponent implements OnInit {
    @Input() dataTable;
    @Input() columnHeader: any[];
 
-   public dataSource;
+   public dataSource: MatTableDataSource<any>;
+   public displayedColums;
 
    // @ todo!! pasar todos los inputs a un modelo config
   //  @Input() isSortable: boolean;
@@ -25,12 +26,25 @@ export class TableComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.dataTable = new MatTableDataSource(this.dataTable);
-    console.log('llena fuente datos ', this.dataTable.data);
+  this.checkBasicConfig();
   }
   
 
-  public configColumns() {
+  public checkBasicConfig() {
+    if(this.dataTable) {
+      this.dataSource = new MatTableDataSource<any>(this.dataTable);
+      console.log('dataSource ', this.dataSource);
+    } else {
+      console.log('no hay datos que pintar');
+    }
+
+    if(this.columnHeader) {
+      this.displayedColums = this.columnHeader;
+      console.log('columnas ', this.displayedColums);
+      console.log('columnas ', this.displayedColums.length);
+    } else {
+      console.log('no hay columnas configuradas');
+    }
 
   }
 }

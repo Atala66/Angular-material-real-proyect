@@ -1,19 +1,17 @@
 
-<div class="material-table-component">
+<div class="material-table-component mat-elevation-z8">
 
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
 
-<mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataTable">
+<mat-table  [dataSource]="dataTable">
 <!-- Generic column definition -->
-<div *ngIf="dataTable">
- <ng-container [matColumnDef]="dataTable" *ngFor="let dataTable of columnHeader">
-    <th mat-header-cell *matHeaderCellDef>{{  dataTable }}</th>
-    <td mat-cell *matCellDef="let element"> {{element[dataTable] }}</td>
+ <ng-container *ngFor="let data of columnHeader"  [matColumnDef]="data" >
+    <th mat-header-cell *matHeaderCellDef>{{  data }}</th>
+    <td mat-cell *matCellDef="let element"> {{element[data] }}</td>
   </ng-container>
-</div>
-<!--Columns-->
+
 <tr mat-header-row *matHeaderRowDef="columnHeader"></tr>
 <mat-row *matRowDef="let row; columns: columnHeader"></mat-row>
     
