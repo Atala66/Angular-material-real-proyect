@@ -18,6 +18,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {CdkTableModule} from '@angular/cdk/table';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -74,6 +75,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatDialogModule,
     MatSidenavModule,
     MatMenuModule,
+    MatPaginatorModule,
+    MatSortModule,
     CdkTableModule
    ]
 })

@@ -1,14 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { EventEmitter } from 'events';
+import { TableService } from './table.service';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.less']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit {
    @Input() dataTable;
+   @Input() url: string;
    @Input() columnHeader: any[];
+   // @Output() rowData: new EventEmitter<any>();
 
    public dataSource: MatTableDataSource<any>;
    public displayedColums;
@@ -21,30 +25,43 @@ export class TableComponent implements OnInit {
   // @Input() hasRadioButton: boolean;
  
 
-  constructor() {
+  constructor(
+    private tableSrv: TableService
+  ) {
 
    }
 
   ngOnInit() {
   this.checkBasicConfig();
   }
+
+  ngAfterViewInit() {}
   
 
   public checkBasicConfig() {
-    if(this.dataTable) {
-      this.dataSource = new MatTableDataSource<any>(this.dataTable);
-      console.log('dataSource ', this.dataSource);
-    } else {
-      console.log('no hay datos que pintar');
-    }
-
-    if(this.columnHeader) {
+      this.tableSrv.getData(this.url).subscribe(response => {
+        if (response) {
+          this.dataTable = response;
+          this.dataSource = new MatTableDataSource(this.dataTable);
+          console.log('esta es el objeto dataSource', this.dataSource);
+        } else {
+          console.log('sin respuesta');
+        }
+      });
+      if (this.columnHeader) {
       this.displayedColums = this.columnHeader;
       console.log('columnas ', this.displayedColums);
       console.log('columnas ', this.displayedColums.length);
     } else {
       console.log('no hay columnas configuradas');
     }
-
   }
+
+    public onRowClicked(row) {
+      console.log('Row clicked: ', row);
+    }
+
+    public doFilter = (value: string) => {
+      this.dataSource.filter = value.trim().toLocaleLowerCase();
+    }
 }

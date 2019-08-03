@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableService } from 'src/app/components/table/table.service';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatTableDataSource, MatSortModule } from '@angular/material';
 
 @Component({
   selector: 'app-table-view',
@@ -8,8 +8,11 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
   styleUrls: ['./table-view.component.less']
 })
 export class TableViewComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   public columns: any;
   dataSource: any;
+  public data: any;
+  public url: string;
 
   constructor(
     private tableSrv: TableService
@@ -17,21 +20,16 @@ export class TableViewComponent implements OnInit {
 
   ngOnInit() {
     this.configTable();
+
   }
 
   public configTable() {
-     this.configColumns();
-     this.getUsers();
-
-  }
-
-  public getUsers() {
-    const url  = '../../../assets/mocks/users.json';
-    this.tableSrv.getData(url).subscribe(response => {
+    this.columns = [ 'Id', 'Nombre', 'Apellido_1', 'Apellido_2',  'Nacionalidad', 'Edad'];
+    this.url  = '../../../assets/mocks/users.json';
+    this.tableSrv.getData(this.url).subscribe(response => {
      if (response) {
-       this.dataSource = new MatTableDataSource(response);
-       console.log('esta es la fuente de datos', this.dataSource);
-
+       this.data = response;
+       this.dataSource = new MatTableDataSource(this.data);
      } else {
        console.log('sin respuesta');
      }
@@ -40,7 +38,5 @@ export class TableViewComponent implements OnInit {
   }
 
 
-  public configColumns() {
-    this.columns = [ 'Id', 'Nombre', 'Apellidos', 'Nacionalidad', 'Edad'];
-   }
+
 }
