@@ -1,38 +1,47 @@
 .material-table-component {
     // display: flex;
     // flex-direction: column;
-    min-width: 300px;
-    width: 90%;
+    min-width: auto !important;
+    width: 80% !important;
     margin: 0 auto;
     margin-top: 40px;
 
     mat-form-field{
-        display: inline;
-        padding: 15px; 
+        display: block;
+        padding: 15px;
+        max-width: 30%;
+        margin: 0 auto;
     }
 
     .mat-table {
-        overflow: hidden;
-        padding: 15px;
-        th, td {
-            width:20%;
-        }
-       
-          
-        td.mat-cell {
+        display: table;
+        width: 100%;
+        > .mat-header-row, > .mat-row {
+            display: table-row;
+            padding: 0;
             border: none;
+            > .mat-header-cell, > .mat-cell {
+                display: table-cell;
+                height: 48px;
+                vertical-align: middle;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            }
         }
-    
-        mat-table {
-            user-select: none;
-        
+        .mat-header-row > th {
+            font-size: 16px;
         }
-        
-        mat-row{
-          position: relative;
-         }
-      }
 
+        .mat-row > td {
+            font-size: 14px;
+        } 
+
+        .mat-row:hover {
+            cursor: pointer;
+            background-color:rgba(255, 0, 0, 0.4);
+            box-shadow: inset 1px 3px 8px 1px rgba(255, 0, 0, 0.6);
+            color: #ffff;
+        }
+    }
   }
 
   

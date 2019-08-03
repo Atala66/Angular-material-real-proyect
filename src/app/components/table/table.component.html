@@ -2,25 +2,63 @@
 <div class="material-table-component mat-elevation-z8">
 
 <mat-form-field>
-  <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filter">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
 
-<mat-table #table  [dataSource]="dataTable" class="mat-table mat-elevation-z8">
-<!-- Generic column definition -->
- <ng-container [matColumnDef]="column"  *ngFor="let column of columnHeader">
-    <th mat-header-cell *matHeaderCellDef>{{  column }}</th>
-    <td mat-cell *matCellDef="let element"> {{element[column] }}</td>
+<mat-table #table  
+[dataSource]="dataTable" class="mat-table mat-elevation-z8" matSort>
+  <!-- Checkbox Column -->
+  <ng-container [matColumnDef]="checkbox"
+  *ngFor="let checkbox of columnCheckbox">
+               <th mat-header-cell *matHeaderCellDef> 
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="checkbox.hasValue() && isAllSelected()"
+                    [indeterminate]="checkbox.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+      <td mat-cell *matCellDef="let element">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? checkbox.toggle(element) : null"
+                    [checked]="checkbox.isSelected(element)"
+                    [aria-label]="checkboxLabel(element)">
+      </mat-checkbox>
+    </td>
+
+  
   </ng-container>
 
-<tr mat-header-row *matHeaderRowDef="columnHeader"></tr>
+
+<!-- Generic column definition -->
+ <ng-container [matColumnDef]="column"
+      *ngFor="let column of columnHeader">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{  column }}</th>
+      <td mat-cell *matCellDef="let element"> {{element[column] }}</td>
+
+  </ng-container>
+
+  <!-- <ng-container [matColumnDef]="colAct"
+      *ngFor="let colAct of colAct of columnActions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{  colAct }}</th>
+      <td mat-cell *matCellDef="let element">{{element.colAct }}</td>
+  </ng-container>-->
+
+ 
+
+  
+    
+
+
+
+<tr mat-header-row *matHeaderRowDef="columnHeader; columnActions"></tr>
 <mat-row class="material-rows" *matRowDef="let row; columns: columnHeader"
  (click)="onRowClicked(row)"></mat-row>
     
 </mat-table>
 <mat-paginator
-  [pageSizeOptions]="[5, 10, 20]"
+  [pageSizeOptions]="[5, 10, 15, 20]"
   showFirstLastButtons
-></mat-paginator>
+  (changes)="pageChanged($event)"></mat-paginator>
 
 
 </div>

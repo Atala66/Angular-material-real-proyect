@@ -17,6 +17,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {CdkTableModule} from '@angular/cdk/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
 
 
 @NgModule({
@@ -45,7 +48,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatMenuModule,
     MatPaginatorModule,
     MatSortModule,
-    CdkTableModule
+    CdkTableModule,
+    MatCheckboxModule
   ],
   declarations: [ ],
   providers: [
@@ -77,7 +81,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatMenuModule,
     MatPaginatorModule,
     MatSortModule,
-    CdkTableModule
+    CdkTableModule,
+    MatCheckboxModule
    ]
 })
 export class MaterialModule {
