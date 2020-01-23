@@ -16,13 +16,14 @@ export class DialogService {
   ) {}
 
 
-  public openDialog(dialogTitle?: string, dialogIcon?: any): Observable<any>  {
+  public openDialog(dialogIcon?: any, dialogTitle?: string, dialogContent?: string): Observable<any>  {
     this.dialogRef = this._dialogSrv.open(DialogComponent, {
-      width: '500px',
-      height: '250px',
+      width: 'auto',
+      height : 'auto',
       data: {
+        icon: dialogIcon ? dialogIcon : '',
         title: dialogTitle ? dialogTitle : '',
-        icon: dialogIcon ? dialogIcon : ''
+        content: dialogContent ? dialogContent : '',
       }
     });
     return this.dialogRef.afterClosed();

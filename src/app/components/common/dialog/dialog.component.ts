@@ -9,6 +9,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class DialogComponent implements OnInit {
    public title: string;
+   public content: string;
    public icon: any;
    public value: any;
   constructor(
@@ -18,6 +19,7 @@ export class DialogComponent implements OnInit {
 
    if (data) {
     this.title = data.title;
+    this.content = data.content;
     this.icon = data.icon;
     }
    }

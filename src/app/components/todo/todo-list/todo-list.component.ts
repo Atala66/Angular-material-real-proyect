@@ -35,9 +35,9 @@ export class TodoListComponent implements OnInit {
   }
 
   public deleteTask(id) {
-    const deleteTitle = 'Are you sure you wan´t to delete this task ?';
-    const dialogIcon = 'warning';
-    this._dialogSrv.openDialog(deleteTitle, dialogIcon);
+    const modalIcon = 'warning';
+    const modalTitle = 'Are you sure you wan´t to delete this task ?';
+    this._dialogSrv.openDialog(modalIcon, modalTitle);
     this._dialogSrv.dialogRef.afterClosed().subscribe(
      result => {
        console.log( result);
