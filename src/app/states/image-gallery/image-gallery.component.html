@@ -3,9 +3,10 @@
    *ngFor="let image of images;index as i"
    (click)="openModalDescription()">
 <div class="content-overlay">
-     <div class="content-details fadeIn-top">
-        <h3 class="image-title">{{ image.title }}</h3>
-        <p class="image-description">{{ image.description }}</p>
+      <div class="content-details fadeIn-top">
+      <div id="view_details">View details</div>
+      <!-- <h3 class="image-title">{{ image.title }}</h3>
+        <p class="image-description">{{ image.description }}</p>-->
       </div> 
 </div>
     <img mat-card-image [src]="image.url" class="image">
