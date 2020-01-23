@@ -11,6 +11,8 @@ export class DialogComponent implements OnInit {
    public title: string;
    public content: string;
    public icon: any;
+   public cancelText: string;
+   public confirmText: string;
    public value: any;
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
@@ -21,6 +23,8 @@ export class DialogComponent implements OnInit {
     this.title = data.title;
     this.content = data.content;
     this.icon = data.icon;
+    this.cancelText = data.cancelText;
+    this.confirmText = data.confirmText;
     }
    }
 

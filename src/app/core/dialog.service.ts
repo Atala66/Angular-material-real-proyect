@@ -16,11 +16,18 @@ export class DialogService {
   ) {}
 
 
-  public openDialog(dialogIcon?: any, dialogTitle?: string, dialogContent?: string): Observable<any>  {
+  public openDialog(
+    cancelText: string,
+    confirmText: string,
+    dialogIcon?: any,
+    dialogTitle?: string,
+    dialogContent?: string): Observable<any>  {
     this.dialogRef = this._dialogSrv.open(DialogComponent, {
       width: 'auto',
       height : 'auto',
       data: {
+        cancelText : cancelText ? cancelText : '',
+        confirmText : confirmText ? confirmText : '',
         icon: dialogIcon ? dialogIcon : '',
         title: dialogTitle ? dialogTitle : '',
         content: dialogContent ? dialogContent : '',
