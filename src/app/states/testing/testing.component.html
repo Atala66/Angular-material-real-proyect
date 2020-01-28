@@ -1,3 +1,16 @@
 
 
-<h1>Testing works!!</h1>
+
+
+<div class="test-ng-class">
+<p [className]=" 'active' ">This is an active class</p>
+<p [className]=" isRed ? 'isRed' : 'isBlue' ">This is a ternary class</p>
+<p [ngClass]="{
+  'is-active': isActive,
+  'is-inactive': !isActive,
+  'is-focused': isActive && isFocused
+}">This is an object of classes</p>
+<p></p>
+<p></p>
+
+</div>
